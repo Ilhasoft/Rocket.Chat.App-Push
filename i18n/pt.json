@@ -1,0 +1,11 @@
+{
+    "config_rc_crm_url": "URL CRM RocketChat",
+
+    "config_push_base_url"   : "URL Base do Push",
+    "config_push_token"      : "Token de API Push",
+    "config_push_taken_flow" : "Evento Taken",
+    "config_push_queued_flow": "Evento Queued",
+    "config_push_closed_flow": "Evento Closed",
+    "config_push_media_flow" : "Evento Media",
+    "config_push_timeout"    : "Timeout (segundos)"
+}

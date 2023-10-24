@@ -1,0 +1,15 @@
+{
+    "id": "da9d16cd-c236-4b69-b535-43237ffcfb13",
+    "version": "0.0.1",
+    "requiredApiVersion": "^1.4.0",
+    "iconFile": "icon.png",
+    "author": {
+        "name": "Ilhasoft",
+        "homepage": "https://github.com/push-platform/Rocket.Chat.App-Push/",
+        "support": "https://github.com/push-platform/Rocket.Chat.App-Push/issues/"
+    },
+    "name": "PushApp",
+    "nameSlug": "pushapp",
+    "classFile": "PushApp.ts",
+    "description": "Push integration"
+}
