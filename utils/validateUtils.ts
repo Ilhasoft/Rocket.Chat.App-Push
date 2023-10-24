@@ -1,6 +1,6 @@
 import {validate} from '../libs/validate';
 
-export function pushEndpointValidateQuery(query): any {
+export function pushEndpointValidateQuery(query: object): any {
 
     const constraints = {
         department: {

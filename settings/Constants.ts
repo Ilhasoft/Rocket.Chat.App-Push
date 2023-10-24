@@ -8,3 +8,5 @@ export const PUSH_TAKEN_FLOW  = 'push_taken_flow';
 export const PUSH_QUEUED_FLOW = 'push_closed_flow';
 export const PUSH_CLOSED_FLOW = 'push_closed_flow';
 export const PUSH_MEDIA_FLOW  = 'push_media_flow';
+
+export const REQUEST_TIMEOUT      = 'request_timeout';

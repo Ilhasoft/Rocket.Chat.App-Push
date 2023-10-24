@@ -8,19 +8,18 @@ import { ApiSecurity, ApiVisibility } from '@rocket.chat/apps-engine/definition/
 import { App } from '@rocket.chat/apps-engine/definition/App';
 import { IAppInfo } from '@rocket.chat/apps-engine/definition/metadata';
 import { SettingType } from '@rocket.chat/apps-engine/definition/settings';
-import { PushEndpoint } from './endpoints/PushEndpoint';
+import { CreateRoomEndpoint } from './endpoints/CreateRoomEndpoint';
+import { ReceiveMessageEndpoint } from './endpoints/ReceiveMessageEndpoint';
 import { RocketEndpoint } from './endpoints/RocketEndpoint';
 import {
-    RC_USER_ID,
-    RC_ACCESS_TOKEN,
-    RC_CRM_URL,
-
     PUSH_BASE_URL,
-    PUSH_TAKEN_FLOW,
-    PUSH_QUEUED_FLOW,
     PUSH_CLOSED_FLOW,
     PUSH_MEDIA_FLOW,
+    PUSH_QUEUED_FLOW,
+    PUSH_TAKEN_FLOW,
     PUSH_TOKEN,
+    RC_CRM_URL,
+    REQUEST_TIMEOUT,
 } from './settings/Constants';
 
 export class PushApp extends App {
@@ -36,8 +35,9 @@ export class PushApp extends App {
             visibility: ApiVisibility.PUBLIC,
             security: ApiSecurity.UNSECURE,
             endpoints: [
+                new ReceiveMessageEndpoint(this),
+                new CreateRoomEndpoint(this),
                 new RocketEndpoint(this),
-                new PushEndpoint(this),
             ],
         });
 
@@ -104,6 +104,15 @@ export class PushApp extends App {
             required: false,
             public: false,
             i18nLabel: 'config_push_media_flow',
+        });
+
+        await configuration.settings.provideSetting({
+            id:  REQUEST_TIMEOUT,
+            type: SettingType.NUMBER,
+            packageValue: 30,
+            required: true,
+            public: false,
+            i18nLabel: 'config_push_timeout',
         });
 
     }
